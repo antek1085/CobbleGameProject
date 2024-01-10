@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -41,9 +42,12 @@ public class Character_Controler : MonoBehaviour
     [SerializeField] SO_Vector3 leaderVector3;
     [FormerlySerializedAs("list")]
     public SO_ListGameObject characterList;
+
+    [SerializeField] TextMeshProUGUI characterName; 
     
     void Awake()
     {
+        characterName.text = gameObject.name;
         leaderVector3.vector3 = Vector3.zero;
         characterList.list.Add(gameObject);
         
@@ -110,7 +114,11 @@ public class Character_Controler : MonoBehaviour
         else
         {
             agent.stoppingDistance = 2;
-            agent.SetDestination(leaderVector3.vector3);
+            if (leaderVector3.vector3 != Vector3.zero)
+            {
+               agent.SetDestination(leaderVector3.vector3); 
+            }
+            
         }
     }
 
