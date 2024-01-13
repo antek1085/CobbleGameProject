@@ -15,7 +15,13 @@ public class Button_Controler : MonoBehaviour
 
     void Awake()
     {
-       characterName  = characterList.list[numberOnList].name;
+        if (numberOnList > characterList.list.Count - 1)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        
+        characterName  = characterList.list[numberOnList].name;
        characterNameOnButton.text = characterName;
     }
     public void OnClick()
@@ -40,7 +46,6 @@ public class Button_Controler : MonoBehaviour
                     break;
                 }  
             }
-            
         }
         yield return null;
     }

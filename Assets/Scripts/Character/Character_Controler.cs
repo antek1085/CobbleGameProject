@@ -43,11 +43,8 @@ public class Character_Controler : MonoBehaviour
     [FormerlySerializedAs("list")]
     public SO_ListGameObject characterList;
 
-    [SerializeField] TextMeshProUGUI characterName; 
-    
     void Awake()
     {
-        characterName.text = gameObject.name;
         leaderVector3.vector3 = Vector3.zero;
         characterList.list.Add(gameObject);
         

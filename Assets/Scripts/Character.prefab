@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 5692222742829732807}
   - component: {fileID: 2055620853412713247}
   - component: {fileID: 5834745221468608046}
+  - component: {fileID: 3115186204191871949}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -332,6 +333,35 @@ MonoBehaviour:
   leaderVector3: {fileID: 11400000, guid: d137b655e4bf39b4da1f47fb35288d42, type: 2}
   characterList: {fileID: 11400000, guid: c381301d5413287479682155762a9749, type: 2}
   characterName: {fileID: 1672105062604208015}
+--- !u!114 &3115186204191871949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5677926862972875509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95193a481cff0274cbd44b30dfc345b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: {fileID: 1672105062604208015}
+  Names:
+  - James
+  - Robert
+  - John
+  - Michael
+  - David
+  - William
+  - Richard
+  - Mary
+  - Patricia
+  - Jennifer
+  - Linda
+  - Elizabeth
+  - Barbara
+  - Susan
+  - Jessica
 --- !u!1 &6695344398658470120
 GameObject:
   m_ObjectHideFlags: 0
