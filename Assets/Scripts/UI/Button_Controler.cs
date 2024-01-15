@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Button_Controler : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Button_Controler : MonoBehaviour
     GameObject character;
     [SerializeField] int numberOnList;
     [SerializeField] TextMeshProUGUI characterNameOnButton;
+    Button button;
     string characterName;
 
     void Awake()
@@ -22,12 +24,25 @@ public class Button_Controler : MonoBehaviour
         }
         
         characterName  = characterList.list[numberOnList].name;
-       characterNameOnButton.text = characterName;
+        characterNameOnButton.text = characterName;
+        characterLead = characterList.list[numberOnList];
+       button = GetComponent<Button>();
+    }
+
+    void Update()
+    {
+        if (characterLead.GetComponent<Character_Controler>().isHeLead)
+        {
+            button.interactable = false;
+        }
+        else
+        {
+            button.interactable = true;
+        }
     }
     public void OnClick()
     {
         Debug.Log("!");
-        characterLead = characterList.list[numberOnList];
         characterLead.GetComponent<Character_Controler>().isHeLead = true;
         StartCoroutine(ChangeLeader());
     }

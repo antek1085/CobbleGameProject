@@ -110,7 +110,7 @@ public class Character_Controler : MonoBehaviour
         }
         else
         {
-            agent.stoppingDistance = 2;
+            agent.stoppingDistance = 3;
             if (leaderVector3.vector3 != Vector3.zero)
             {
                agent.SetDestination(leaderVector3.vector3); 
