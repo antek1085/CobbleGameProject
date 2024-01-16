@@ -64,9 +64,9 @@ public class MainMenu_Controler : MonoBehaviour
     IEnumerator LoadSceneAsync()
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelToLoad);
-       // AsyncOperation asyncLoadUI = SceneManager.LoadSceneAsync(UIToLoad,LoadSceneMode.Additive);
+        AsyncOperation asyncLoadUI = SceneManager.LoadSceneAsync(UIToLoad,LoadSceneMode.Additive);
         asyncLoad.allowSceneActivation = false;
-       // asyncLoadUI.allowSceneActivation = false;
+        asyncLoadUI.allowSceneActivation = false;
         
         while(!asyncLoad.isDone && delay > 0)
         {
@@ -79,7 +79,7 @@ public class MainMenu_Controler : MonoBehaviour
         }
         
         asyncLoad.allowSceneActivation = delay <= 0;
-       // asyncLoadUI.allowSceneActivation = delay <= 0;
+        asyncLoadUI.allowSceneActivation = delay <= 0;
     }
     
     public void ExitButton()
