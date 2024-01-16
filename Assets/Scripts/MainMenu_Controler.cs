@@ -24,6 +24,7 @@ public class MainMenu_Controler : MonoBehaviour
     private Slider characterSlider;
     [SerializeField] SO_INT characters;
     [SerializeField] TextMeshProUGUI numberOfCharacters;
+    private int sliderValue;
     
     void Start()
     {
@@ -41,8 +42,8 @@ public class MainMenu_Controler : MonoBehaviour
     {
         if (characterSlider != null)
         {
-            characters.value = Convert.ToInt32(characterSlider.value);
-            numberOfCharacters.text = characters.value.ToString();
+            sliderValue = Convert.ToInt32(characterSlider.value);
+            numberOfCharacters.text = sliderValue.ToString();
         }
     }
     public void StartButton()
@@ -54,6 +55,7 @@ public class MainMenu_Controler : MonoBehaviour
 
     public void PlayButton()
     {
+        characters.value = Convert.ToInt32(characterSlider.value);
         loadingScreen.SetActive(true);
         menuButtons.SetActive(false);
         StartCoroutine(LoadSceneAsync());
@@ -62,22 +64,22 @@ public class MainMenu_Controler : MonoBehaviour
     IEnumerator LoadSceneAsync()
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelToLoad);
-        AsyncOperation asyncLoadUI = SceneManager.LoadSceneAsync(UIToLoad,LoadSceneMode.Additive);
+       // AsyncOperation asyncLoadUI = SceneManager.LoadSceneAsync(UIToLoad,LoadSceneMode.Additive);
         asyncLoad.allowSceneActivation = false;
-        asyncLoadUI.allowSceneActivation = false;
+       // asyncLoadUI.allowSceneActivation = false;
         
         while(!asyncLoad.isDone && delay > 0)
         {
             loading = Mathf.Clamp01(asyncLoad.progress/ 0.9f);
             delay -= Time.deltaTime;
-            slider.value = 1 - (delay / asyncLoad.progress);
+            slider.value = 1 - (delay / asyncLoad.progress );
             Debug.Log(-1 - (delay / asyncLoad.progress));
             
             yield return null;
         }
         
         asyncLoad.allowSceneActivation = delay <= 0;
-        asyncLoadUI.allowSceneActivation = delay <= 0;
+       // asyncLoadUI.allowSceneActivation = delay <= 0;
     }
     
     public void ExitButton()
